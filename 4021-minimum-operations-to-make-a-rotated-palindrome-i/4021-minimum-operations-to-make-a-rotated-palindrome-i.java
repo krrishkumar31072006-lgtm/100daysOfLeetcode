@@ -5,10 +5,11 @@ class Solution {
         int cost=0;
 
         while(i<j){
-            
+             if(s.charAt(i)!=s.charAt(j)){
                 int a1 = Math.abs((s.charAt(i)-'a')-(s.charAt(j)-'a'));
                 int a2=26-a1;
                 cost += Math.min(a1,a2);
+             }
             i++;
             j--;
         }
