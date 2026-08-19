@@ -5,6 +5,7 @@ class Solution {
         if(!ans.contains(out)) ans.add(new ArrayList<>(out));
           if(inp.size() == 0) return ;
           for(int i = 0;i < inp.size();i++){
+            if(i>0 && inp.get(i)==inp.get(i-1)) continue;
             List<Integer> newinp = new ArrayList<>(inp);
             List<Integer> newout = new ArrayList<>(out);
             newout.add(newinp.get(i));
