@@ -1,31 +1,20 @@
-
-import java.util.Arrays;
-
 class Solution {
-
     public int jump(int[] nums) {
         int n = nums.length;
-
-        int[] dp = new int[n];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = 0;
-        solve(nums, dp);
-        return dp[n - 1];
-    }
-
-    public void solve(int[] nums, int[] dp) {
-        int n = nums.length;
-
-        for (int i = 0; i < n; i++) {
-            if (dp[i] == Integer.MAX_VALUE) {
-                continue;
+        int dp[] = new int[n];
+        dp[n-1] = 0;
+        for(int i = n-2;i>=0;i--){
+            int minimum = Integer.MAX_VALUE;
+            for(int j = 1;j <= nums[i];j++){
+            if(i + j < n){
+             int ans = dp[i+j];
+             if(ans != Integer.MAX_VALUE){
+             minimum = Math.min(minimum,1 + ans);
+             }
             }
-            for (int j = i + 1;
-                 j < n && j <= i + nums[i];
-                 j++) {
-
-                dp[j] = Math.min(dp[j], dp[i] + 1);
             }
+            dp[i] = minimum;
         }
+        return dp[0];
     }
 }
